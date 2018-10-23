@@ -1,0 +1,39 @@
+1、maven项目run的时候没有run on server这个选项：
+	新建或新导入的Maven web项目，选中项目右键->maven->update project
+	
+2、xsd文件的头部报错
+	多半是版本问题，修改为正确的版本便可以了。正确版本可以看报错信息，里面应该有。
+	
+3、ModelAndView中，在addobject方法中，直接传字符串没有问题，但是提前定义字
+	符串再传入，就会model为null的问题（断点显示提前定义的字符串内容正确）
+	初步测试发现addobject方法中不能够放外部定义的字符串，取到的都是null
+	原因：在打断点时，应该打到下一步，这样赋值语句才能执行成功，变量也才会有数据
+	
+4、Algorithm HmacSHA1 not available
+	将java依赖由jdk改为jre
+	
+5、在maven项目中，找不到mybatis配置文件
+6、前端静态资源找不到
+	读取的时候应该注意
+	
+7、关于加斜杠与不加斜杠，相对路径和绝对路径有什么区别的问题
+
+8、返回值不能在if语句中添加？
+	只在if条件中添加肯定是不行的，需要在每个可能出现的条件中都添加相应的返回值
+	
+9、springmvc在接收json数据时
+	先是创建一个空构造函数，然后调用它的getter、setter方法，而不是直接用带参构造器
+	
+10、java.lang.IllegalArgumentException: Mapped Statements 
+	collection does not contain value for com.bitongyun.fileMapper.addFile
+	没有把相应的mapper文件写在mybatis-config.xml中
+	在其中添加：<mapper resource="mapper/fileMapper.xml"/>
+	
+11、一般date数据和sql的date数据区别与转化
+
+12、jsp标签的引入
+
+13、传一个map或者list到前端
+
+14、一次性使用多个@SessionAttributes
+	

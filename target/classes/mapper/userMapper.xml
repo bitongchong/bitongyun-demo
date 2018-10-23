@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一，java代码中根据名称空间调用其方法 -->
+<!-- tmd这个namespace没有强制规定，但是在test文件中的statement描述中，必须要和这个时候写的namespace相同 -->
+<mapper namespace="com.bitongyun.userMapper">
+	
+	<insert id="addUser" parameterType="User">
+		insert into USER(user_name, password) values(#{user_name}, #{password})
+	</insert>
+	
+	<select id="findUser" parameterType="User" resultType="User">
+		SELECT * FROM USER WHERE user_name = #{user_name} AND PASSWORD = #{password}
+	</select>
+	
+	<select id="findUser2" parameterType="User" resultType="User">
+		SELECT * FROM USER WHERE user_name = #{user_name}
+	</select>
+
+</mapper>

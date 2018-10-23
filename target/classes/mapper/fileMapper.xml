@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一，java代码中根据名称空间调用其方法 -->
+<!-- tmd这个namespace没有强制规定，但是在test文件中的statement描述中，必须要和这个时候写的namespace相同 -->
+<mapper namespace="com.bitongyun.fileMapper">
+	
+	<insert id="addZip" parameterType="com.bitongyun.bean.File">
+		insert into Zip(file_name,file_url,user_name,upload_time) values(#{file_name}, #{file_url}, #{user_name}, #{upload_time})
+	</insert>
+	
+	<insert id="addMusic" parameterType="com.bitongyun.bean.File">
+		insert into Music(file_name,file_url,user_name,upload_time) values(#{file_name}, #{file_url}, #{user_name}, #{upload_time})
+	</insert>
+	
+	<insert id="addVideo" parameterType="com.bitongyun.bean.File">
+		insert into Video(file_name,file_url,user_name,upload_time) values(#{file_name}, #{file_url}, #{user_name}, #{upload_time})
+	</insert>
+
+	
+	<insert id="addPhoto" parameterType="com.bitongyun.bean.File">
+		insert into Photo(file_name,file_url,user_name,upload_time) values(#{file_name}, #{file_url}, #{user_name}, #{upload_time})
+	</insert>
+
+	
+	<insert id="addOther" parameterType="com.bitongyun.bean.File">
+		insert into Other(file_name,file_url,user_name,upload_time) values(#{file_name}, #{file_url}, #{user_name}, #{upload_time})
+	</insert>
+	
+	
+	<insert id="addDoc" parameterType="com.bitongyun.bean.File">
+		insert into Document(file_name,file_url,user_name,upload_time) values(#{file_name}, #{file_url}, #{user_name}, #{upload_time})
+	</insert>
+	
+	<select id="findOther" parameterType="String" resultType="File">
+		SELECT * FROM Other WHERE user_name = #{current_user_name}
+	</select>
+	
+	<select id="findDoc" parameterType="String" resultType="File">
+		SELECT * FROM Document WHERE user_name = #{current_user_name}
+	</select>
+
+	<select id="findZip" parameterType="String" resultType="File">
+		SELECT * FROM Photo WHERE user_name = #{current_user_name}
+	</select>
+		
+	<select id="findVideo" parameterType="String" resultType="File">
+		SELECT * FROM Video WHERE user_name = #{current_user_name}
+	</select>
+		
+	<select id="findPhoto" parameterType="String" resultType="File">
+		SELECT * FROM Photo WHERE user_name = #{current_user_name}
+	</select>
+	
+	<select id="findMusic" parameterType="String" resultType="File">
+		SELECT * FROM Music WHERE user_name = #{current_user_name}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultType="File">
+		SELECT * FROM video WHERE user_name=#{current_user_name}
+		UNION ALL
+		SELECT * FROM photo WHERE user_name=#{current_user_name}
+		UNION ALL
+		SELECT * FROM music WHERE user_name=#{current_user_name}
+		UNION ALL
+		SELECT * FROM other WHERE user_name=#{current_user_name}
+		UNION ALL
+		SELECT * FROM document WHERE user_name=#{current_user_name}
+		UNION ALL
+		SELECT * FROM zip WHERE user_name=#{current_user_name}
+	</select>
+</mapper>
